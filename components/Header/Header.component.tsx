@@ -2,19 +2,20 @@ import React from "react";
 
 // COMPONENTS
 import { Button } from "../Button";
+import { Heading } from "../Typography/Heading";
 
 const Header = () => {
   return (
     <nav className="flex flex-row justify-between items-center py-20 px-10">
       <div>
-        <h2 className="mr-4 text-2xl capitalize">jay&apos;s space</h2>
-        <h4 className="text-xl capitalize mr-4">front end developer</h4>
+        <Heading title="jay's space" />
+        <Heading variant="h3" title="front end developer" />
       </div>
 
       <div className="flex flex-row">
-        <h4 className="text-xl capitalize">about</h4>
-        <h4 className="text-xl capitalize mx-4">work</h4>
-        <h4 className="text-xl capitalize">contact</h4>
+        <Heading variant="h3" title="about" />
+        <Heading variant="h3" title="work" className="mx-4" />
+        <Heading variant="h3" title="contact" />
       </div>
     </nav>
   );
