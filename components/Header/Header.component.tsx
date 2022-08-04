@@ -6,7 +6,7 @@ import { Heading } from "../Typography/Heading";
 
 const Header = () => {
   return (
-    <nav className="flex flex-row justify-between items-center py-20 px-10">
+    <nav className="flex flex-row justify-between items-center py-10 px-10 sticky top-0 left-0">
       <div>
         <Heading title="jay's space" />
         <Heading variant="h3" title="front end developer" />

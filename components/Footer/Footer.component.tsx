@@ -9,7 +9,7 @@ import { Button } from "../Button";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-row justify-center items-center py-6 sticky bottom-0 left-0">
+    <footer className="flex flex-row justify-center items-center py-6">
       <Link href={LINKS.linkedIn}>
         <a>LinkedIn</a>
       </Link>
