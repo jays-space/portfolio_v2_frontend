@@ -31,7 +31,7 @@ const ContactLinks = ({
     <>
       {LINKS.map((link, idx) => (
         <Link key={idx} href={link.to}>
-          <a className={className}>{link.label}</a>
+          <a target="_blank" className={className}>{link.label}</a>
         </Link>
       ))}
 
