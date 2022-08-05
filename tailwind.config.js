@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Raleway"],
+        sans: ["Raleway",],
+        fancy: ['Ruthie', "cursive"],
       },
     },
   },

@@ -9,7 +9,12 @@ const Home: NextPage = () => {
   return (
     <main className="h-full flex flex-col px-96 snap-proximity snap-y">
       {/* hero/featured works section */}
-      <PageSection variant="hero" title="featured works">
+      <PageSection variant="hero" title="notable work">
+        <ProjectGrid />
+      </PageSection>
+
+      {/* notable works section */}
+      <PageSection title="other projects">
         <ProjectGrid />
       </PageSection>
 
@@ -42,11 +47,6 @@ const Home: NextPage = () => {
             veritatis?
           </p>
         </div>
-      </PageSection>
-
-      {/* notable works section */}
-      <PageSection title="other notable projects">
-        <ProjectGrid />
       </PageSection>
 
       {/* contact section */}

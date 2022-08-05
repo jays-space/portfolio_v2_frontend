@@ -1,11 +1,18 @@
 import Image from "next/image";
 import React from "react";
 
+// COMPONENTS
+import { BodyText } from "../Typography/BodyText";
+
 const techStack = ["react", "aws", "tailwind css"];
 
-const ProjectCard = () => {
+interface IProjectCard {
+  cols?: boolean;
+}
+
+const ProjectCard = ({ cols }: IProjectCard) => {
   return (
-    <div className="w-full shadow-xl rounded-lg bg-white cursor-pointer">
+    <div className={`${cols && 'col-span-2 row-span-2'} w-full shadow-xl rounded-lg bg-white cursor-pointer`}>
       {/* thumbnail */}
       <Image
         src="/images/img.jpg"
@@ -18,17 +25,18 @@ const ProjectCard = () => {
 
       <div className="py-4 px-6">
         {/* description */}
-        <p className="mb-6">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-          nesciunt eveniet et quae libero error autem sint aliquam fuga quod?
-        </p>
+        <BodyText className="mb-6 text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo illum
+          facilis exercitationem ea non nulla dicta mollitia iure, rem
+          aspernatur?
+        </BodyText>
 
         {/* text stack */}
-        <div className="flex flex-row">
+        <div className="flex flex-row pb-2">
           {techStack.map((stack, index) => (
-            <p key={index} className="mr-2">
+            <span key={index} className="mr-2 text-sm text-slate-700">
               {stack}
-            </p>
+            </span>
           ))}
         </div>
       </div>
