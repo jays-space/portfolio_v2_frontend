@@ -21,7 +21,7 @@ const PageSection = ({
   return (
     <section
       className={`${
-        variant === "hero" && "-mt-16"
+        variant === "hero" && ""
       } min-h-screen flex flex-col justify-center items-center snap-start`}
     >
       {variant === "hero" && (

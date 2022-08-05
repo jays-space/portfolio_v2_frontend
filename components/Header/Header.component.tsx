@@ -20,9 +20,9 @@ const Header = () => {
         <Heading
           variant="h2"
           title="jay's space"
-          className="!font-fancy font-normal !text-5xl mb-2 "
+          className="font-extrabold !text-red-500"
         />
-        {/* <Heading variant="h4" title="developer portfolio" className="!text-red-500 !font-bold !text-base" /> */}
+        <Heading variant="h4" title="developer portfolio" className="!text-base" />
       </div>
 
       <nav className="flex flex-row">
