@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import Image from "next/image";
 import { useState } from "react";
-import { ContactLinks } from "../components/ContactLinks";
+import type { NextPage } from "next";
+import Link from "next/link";
+import Image from "next/image";
 
 // COMPONENTS
 import { PageSection } from "../components/PageSection";
@@ -9,18 +9,21 @@ import { ProjectGrid } from "../components/ProjectGrid";
 import { BodyText } from "../components/Typography/BodyText";
 
 const Home: NextPage = () => {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+  const [copied, setCopied] = useState(false);
 
-  const sendEmail = (event) => {
-    event.preventDefault();
-    alert({
-      name,
-      email,
-      message,
-    });
+  const copyToClipboard = async () => {
+    navigator.clipboard.writeText("contact.jays.space@gmail.com");
+    let email = await navigator.clipboard.readText();
+
+    if (email === "contact.jays.space@gmail.com") {
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
   };
+
   return (
     <main className="h-full flex flex-col px-96 snap-proximity snap-y">
       {/* hero/featured works section */}
@@ -67,39 +70,38 @@ const Home: NextPage = () => {
       {/* contact section */}
       <PageSection title="contact">
         <div className="flex flex-col justify-center items-center">
-          <BodyText className="mb-10">
+          <BodyText className="mb-10 w-2/3">
             My inbox is always open. Whether you have a question or just want to
             say hi, give me a shout.
           </BodyText>
 
-          <div>
-            <form>
-              <label htmlFor="name">name</label>
-              <input
-                type={"text"}
-                id='name'
-                name="name"
-                value={name}
-                onChange={() => setName((v) => v)}
-                required
-                className="border border-black"
-              />
-              <input
-                type={"email"}
-                name="email"
-                value={email}
-                onChange={() => setEmail((v) => v)}
-                required
-              />
-              <textarea
-                rows={5}
-                name="message"
-                value={message}
-                onChange={() => setMessage((v) => v)}
-                required
-              />
-              <input type={"submit"} onClick={sendEmail} />
-            </form>
+          <div className="mt-5 flex flex-col justify-center items-center">
+            <Link href="mailto:contact.jays.space@gmail.com">
+              <a className="mx-2 py-2 px-4 text-white capitalize font-bold bg-red-500 rounded">
+                shout out
+              </a>
+            </Link>
+
+            <BodyText className="my-2">or</BodyText>
+
+            <div
+              className="cursor-pointer mb-2 px-2 py-1 border border-slate-500 rounded"
+              onClick={copyToClipboard}
+            >
+              <BodyText className="!text-sm">
+                copy email to clipboard
+              </BodyText>
+            </div>
+
+            <span
+              className={`px-2 py-1 bg-green-500 rounded transition-opacity duration-300 ${
+                copied ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <BodyText className={`text-xs text-center text-white`}>
+                Copied
+              </BodyText>
+            </span>
           </div>
         </div>
       </PageSection>
