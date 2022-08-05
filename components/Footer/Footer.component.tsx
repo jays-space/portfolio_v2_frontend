@@ -10,17 +10,11 @@ import { Button } from "../Button";
 const Footer = () => {
   return (
     <footer className="h-10 flex flex-row justify-center items-center py-6">
-      <Link href={LINKS.linkedIn}>
-        <a>LinkedIn</a>
-      </Link>
-
-      <Link href={LINKS.github}>
-        <a>Github</a>
-      </Link>
-
-      <Link href={LINKS.resume}>
-        <a>Resume</a>
-      </Link>
+      {LINKS.map((link, idx) => (
+        <Link key={idx} href={link.to}>
+          <a className="text-sm font-bold text-slate-700 mr-2 last-of-type:mr-0">{link.label}</a>
+        </Link>
+      ))}
     </footer>
   );
 };

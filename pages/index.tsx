@@ -4,6 +4,7 @@ import Image from "next/image";
 // COMPONENTS
 import { PageSection } from "../components/PageSection";
 import { ProjectGrid } from "../components/ProjectGrid";
+import { BodyText } from "../components/Typography/BodyText";
 
 const Home: NextPage = () => {
   return (
@@ -52,10 +53,12 @@ const Home: NextPage = () => {
       {/* contact section */}
       <PageSection title="contact">
         <div className="flex flex-col justify-center items-center">
-          <p className="text-center mt-6 mb-4">
+          <BodyText className="mt-6 mb-4">
             Got a question, a proposal, or just want to say hello?
             <br /> Give me a shout.
-          </p>
+          </BodyText>
+
+          
         </div>
       </PageSection>
     </main>

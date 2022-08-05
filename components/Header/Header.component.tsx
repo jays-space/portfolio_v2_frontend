@@ -1,7 +1,10 @@
+import Link from "next/link";
 import React, { useState } from "react";
+import { LINKS } from "../../constants/Links.constants";
 
 // COMPONENTS
 import { Button } from "../Button";
+import { ContactLinks } from "../ContactLinks";
 import { Heading } from "../Typography/Heading";
 
 const Header = () => {
@@ -23,9 +26,7 @@ const Header = () => {
       </div>
 
       <nav className="flex flex-row">
-        <Heading variant="h4" title="linkedIn" />
-        <Heading variant="h4" title="github" className="mx-4" />
-        <Heading variant="h4" title="resume" />
+        <ContactLinks className="text-xl text-slate-700 mr-2 last-of-type:mr-0" />
       </nav>
     </header>
   );
