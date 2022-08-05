@@ -1,13 +1,32 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 import { LINKS } from "../../constants/Links.constants";
 
 interface IContactLinks {
-  className: string | undefined;
+  email?: boolean;
+  className?: string | undefined;
 }
 
-const ContactLinks = ({ className }: IContactLinks) => {
+const ContactLinks = ({
+  className = undefined,
+  email = false,
+}: IContactLinks) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = async () => {
+    navigator.clipboard.writeText("contact.jays.space@gmail.com");
+    let email = await navigator.clipboard.readText();
+
+    if (email === "contact.jays.space@gmail.com") {
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
+  };
+
   return (
     <>
       {LINKS.map((link, idx) => (
@@ -15,6 +34,15 @@ const ContactLinks = ({ className }: IContactLinks) => {
           <a className={className}>{link.label}</a>
         </Link>
       ))}
+
+      {email && (
+        <span
+          className={`${className} cursor-pointer`}
+          onClick={copyToClipboard}
+        >
+          Email
+        </span>
+      )}
     </>
   );
 };
