@@ -12,20 +12,26 @@ interface IProjectCard {
 
 const ProjectCard = ({ cols }: IProjectCard) => {
   return (
-    <div className={`${cols && 'col-span-2 row-span-2'} w-full shadow-xl rounded-lg bg-white cursor-pointer`}>
+    <div
+      className={`${
+        cols && "col-span-2 row-span-2"
+      } mx-4 shadow-xl rounded-lg bg-white cursor-pointer`}
+    >
       {/* thumbnail */}
-      <Image
-        src="/images/img.jpg"
-        alt="dashboard"
-        layout="intrinsic"
-        width={340}
-        height={240}
-        className="rounded-t-lg object-cover"
-      />
+      <div className="aspect-video">
+        <Image
+          src="/images/img.jpg"
+          alt="dashboard"
+          layout="responsive"
+          width={375}
+          height={240}
+          className="rounded-t-lg object-cover"
+        />
+      </div>
 
       <div className="py-4 px-6">
         {/* description */}
-        <BodyText className="mb-6 text-sm">
+        <BodyText className="mb-6 font-semibold">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo illum
           facilis exercitationem ea non nulla dicta mollitia iure, rem
           aspernatur?
