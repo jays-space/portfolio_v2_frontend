@@ -22,18 +22,20 @@ const Header = () => {
     <header
       className={`${
         isMenuOpen ? "fixed bg-red-500 h-screen" : "sticky bg-stone-100"
-      } top-0 left-0 w-screen flex flex-col justify-center items-center z-50`}
+      } 2xl:bg-transparent top-0 left-0 w-screen flex flex-col justify-center items-center mb-10 z-50`}
     >
       <div
         className={`${
-          isMenuOpen ? "fixed bg-red-500" : "sticky bg-stone-100"
-        } top-0 left-0 w-screen flex flex-row justify-between items-center px-5 py-0 md:px-20 md:py-5 md:mb-10 ${!isMenuOpen && "shadow-lg md:shadow-none"}`}
+          isMenuOpen ? "fixed bg-red-500" : "sticky"
+        } top-0 left-0 w-screen flex flex-row justify-between items-center px-5 py-0 md:px-20 md:py-5  ${
+          !isMenuOpen && "shadow-lg md:shadow-none"
+        }`}
       >
         <div className="flex flex-col">
           <Heading
             variant="h2"
             title="jay's space"
-            className={`font-extrabold !text-lg md:!text-3xl ${
+            className={`font-extrabold !text-2xl md:!text-3xl ${
               isMenuOpen ? " !text-white" : "!text-red-500"
             }`}
           />
@@ -45,7 +47,7 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex flex-row">
-          <ContactLinks className="text-lg text-slate-700 mr-4 last-of-type:mr-0" />
+          <ContactLinks className="text-lg text-slate-700 mr-4 font-bold last-of-type:mr-0 last-of-type:text-white last-of-type:border last-of-type:bg-red-500 rounded px-3 py-2" />
         </nav>
 
         <nav className="flex flex-col self-center p-4 pr-0 md:hidden">

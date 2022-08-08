@@ -31,7 +31,7 @@ const ProjectCard = ({ cols }: IProjectCard) => {
 
       <div className="py-4 px-6">
         {/* description */}
-        <BodyText className="mb-6 font-semibold">
+        <BodyText className="mb-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo illum
           facilis exercitationem ea non nulla dicta mollitia iure, rem
           aspernatur?

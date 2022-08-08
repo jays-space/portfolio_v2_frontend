@@ -101,13 +101,6 @@ const Home: NextPage = () => {
                 Copied
               </BodyText>
             </span>
-
-            {/* <div className="md:hidden mt-10">
-              <BodyText>You can also find me on:</BodyText>
-              <div className="flex flex-row justify-center mt-3">
-                <ContactLinks className="text-slate-700 font-bold border border-slate-500 rounded px-2 py-0.5 mx-2" />
-              </div>
-            </div> */}
           </div>
         </div>
       </PageSection>
