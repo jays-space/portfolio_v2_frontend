@@ -14,8 +14,6 @@ interface IProjectCard {
 }
 
 const ProjectCard = ({ project, cols }: IProjectCard) => {
-  console.log(project);
-  
   return (
     <Link href={`/work/${project?.id}`}>
       <div
