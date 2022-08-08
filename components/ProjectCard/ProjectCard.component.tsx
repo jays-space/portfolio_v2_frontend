@@ -19,6 +19,7 @@ const ProjectCard = ({ description, techStack, cols }: IProjectCard) => {
       className={`${
         cols && "col-span-2 row-span-2"
       } mx-4 shadow-xl rounded-lg bg-white cursor-pointer`}
+      onClick={() => alert('pressed')}
     >
       {/* thumbnail */}
       <div className="aspect-video">

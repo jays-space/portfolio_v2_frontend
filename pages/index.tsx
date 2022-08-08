@@ -15,7 +15,7 @@ export const getStaticProps = async (context: any) => {
   const hero = await fetchAPI("/hero-blurb");
   const about = await fetchAPI("/about-me");
   const featuredWorks = await fetchAPI("/featured-works");
-  // const notableWorks = await fetchAPI("/works");
+  const notableWorks = await fetchAPI("/works");
 
   // Pass the data to our page via props
   return {
@@ -23,7 +23,7 @@ export const getStaticProps = async (context: any) => {
       about: about.data,
       hero: hero.data,
       featured: featuredWorks.data,
-      // otherWork: notableWorks.data,
+      otherWork: notableWorks.data,
     },
   };
 };
@@ -38,12 +38,11 @@ interface IHome {
     };
   };
   featured: WorksType;
+  otherWork: WorksType;
 }
 
-const Home = ({ hero, about, featured }: IHome) => {
+const Home = ({ hero, about, featured, otherWork }: IHome) => {
   const [copied, setCopied] = useState(false);
-
-  console.log(featured);
 
   const copyToClipboard = async () => {
     navigator.clipboard.writeText("contact.jays.space@gmail.com");
@@ -71,7 +70,7 @@ const Home = ({ hero, about, featured }: IHome) => {
 
       {/* notable works section */}
       <PageSection title="other projects">
-        <ProjectGrid />
+        <ProjectGrid projects={otherWork} />
       </PageSection>
 
       {/* about section */}
