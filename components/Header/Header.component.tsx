@@ -1,9 +1,7 @@
-import Link from "next/link";
 import React, { useState } from "react";
-import { LINKS } from "../../constants/Links.constants";
+import { RiMenu4Line } from "react-icons/ri";
 
 // COMPONENTS
-import { Button } from "../Button";
 import { ContactLinks } from "../ContactLinks";
 import { Heading } from "../Typography/Heading";
 
@@ -15,18 +13,26 @@ const Header = () => {
   // if scrolling up, show header
 
   return (
-    <header className="sticky top-0 left-0 right-0 bottom-0 flex flex-row justify-between items-baseline px-20 pt-24 mb-10">
-      <div>
+    <header className="sticky top-0 left-0 w-screen flex flex-row justify-between items-baseline px-10 py-4 md:px-20 lg:pt-24 md:mb-10 bg-stone-100 z-50">
+      <div className="flex flex-col ">
         <Heading
           variant="h2"
           title="jay's space"
           className="font-extrabold !text-red-500"
         />
-        <Heading variant="h4" title="developer portfolio" className="!text-base" />
+        <Heading
+          variant="h4"
+          title="developer portfolio"
+          className="!text-base"
+        />
       </div>
 
-      <nav className="flex flex-row">
-        <ContactLinks className="text-xl text-slate-700 mr-2 last-of-type:mr-0" />
+      <nav className="hidden md:flex flex-row">
+        <ContactLinks className="text-lg text-slate-700 mr-4 last-of-type:mr-0" />
+      </nav>
+
+      <nav className="flex flex-col self-center p-4 pr-0 md:hidden">
+        <RiMenu4Line size={30} />
       </nav>
     </header>
   );
