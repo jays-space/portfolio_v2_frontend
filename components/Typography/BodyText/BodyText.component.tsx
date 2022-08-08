@@ -6,7 +6,7 @@ interface IBodyText {
 }
 
 const BodyText = ({ className = undefined, children }: IBodyText) => {
-  return <p className={`text-base text-center text-slate-700 ${className}`} >{children}</p>;
+  return <p className={`text-base text-center text-slate-700 tracking-wide leading-loose ${className}`} >{children}</p>;
 };
 
 export default BodyText;

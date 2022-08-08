@@ -49,13 +49,13 @@ const Home: NextPage = () => {
             className="md:rounded object-cover"
           />
 
-          <p className="w-2/3 text-center mt-6 mb-4">
+          <BodyText className="w-2/3 text-center mt-6 mb-10">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
             quas molestiae veritatis consectetur? Recusandae porro praesentium
             ut explicabo sit fugiat.
-          </p>
+          </BodyText>
 
-          <p className="w-2/3 text-center">
+          <BodyText className="w-2/3 text-center">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia,
             consectetur nostrum itaque exercitationem repellat recusandae
             deserunt tempore ex vero ipsam, officiis non sit quae esse tempora
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
             tenetur esse deserunt pariatur. Obcaecati blanditiis sit ipsum
             voluptate cum temporibus, quam unde adipisci asperiores labore vero
             veritatis?
-          </p>
+          </BodyText>
         </div>
       </PageSection>
 
