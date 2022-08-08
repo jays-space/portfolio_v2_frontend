@@ -9,7 +9,7 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="bg-stone-100">
+      <body className="bg-stone-100 overflow-x-hidden">
         <Main />
         <NextScript />
       </body>

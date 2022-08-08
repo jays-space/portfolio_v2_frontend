@@ -22,7 +22,7 @@ const Header = () => {
     <header
       className={`${
         isMenuOpen ? "fixed bg-red-500 h-screen" : "sticky bg-stone-100"
-      } 2xl:bg-transparent top-0 left-0 w-screen flex flex-col justify-center items-center mb-10 z-50`}
+      } 2xl:bg-transparent top-0 left-0 w-screen flex flex-col justify-center items-center my-10 z-50`}
     >
       <div
         className={`${
@@ -35,7 +35,7 @@ const Header = () => {
           <Heading
             variant="h2"
             title="jay's space"
-            className={`font-extrabold !text-2xl md:!text-3xl ${
+            className={`font-extrabold !text-2xl md:!text-3xl lg:!text-4xl lg:mb-2 ${
               isMenuOpen ? " !text-white" : "!text-red-500"
             }`}
           />
