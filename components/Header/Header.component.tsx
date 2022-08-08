@@ -27,7 +27,7 @@ const Header = () => {
       <div
         className={`${
           isMenuOpen ? "fixed bg-red-500" : "sticky bg-stone-100"
-        } top-0 left-0 w-screen flex flex-row justify-between items-center px-5 pt-0 md:px-20 lg:pt-24 md:mb-10 ${!isMenuOpen && "shadow-lg"}`}
+        } top-0 left-0 w-screen flex flex-row justify-between items-center px-5 py-0 md:px-20 md:py-5 md:mb-10 ${!isMenuOpen && "shadow-lg md:shadow-none"}`}
       >
         <div className="flex flex-col">
           <Heading
