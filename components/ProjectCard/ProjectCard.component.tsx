@@ -18,7 +18,7 @@ const ProjectCard = ({ cols }: IProjectCard) => {
         src="/images/img.jpg"
         alt="dashboard"
         layout="intrinsic"
-        width={360}
+        width={340}
         height={240}
         className="rounded-t-lg object-cover"
       />

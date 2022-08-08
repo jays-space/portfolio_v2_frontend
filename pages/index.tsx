@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main className="h-full flex flex-col ml-10 snap-proximity snap-y">
+    <main className="h-full flex flex-col snap-proximity snap-y">
       {/* hero/featured works section */}
       <PageSection variant="hero" title="notable work">
         <ProjectGrid />
