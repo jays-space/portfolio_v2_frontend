@@ -22,7 +22,7 @@ const PageSection = ({
     <section
       className={`${
         variant === "hero" && ""
-      } min-h-screen flex flex-col justify-center items-center snap-start bg-red-300`}
+      } min-h-screen flex flex-col justify-center items-center snap-start`}
     >
       {variant === "hero" && (
         <div className="mb-24 flex flex-col items-center">

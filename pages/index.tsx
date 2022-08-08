@@ -7,6 +7,7 @@ import Image from "next/image";
 import { PageSection } from "../components/PageSection";
 import { ProjectGrid } from "../components/ProjectGrid";
 import { BodyText } from "../components/Typography/BodyText";
+import { ContactLinks } from "../components/ContactLinks";
 
 const Home: NextPage = () => {
   const [copied, setCopied] = useState(false);
@@ -43,9 +44,9 @@ const Home: NextPage = () => {
             src="/images/img.jpg"
             alt="dashboard"
             layout="intrinsic"
-            width={360}
-            height={360}
-            className="rounded object-cover"
+            width={375}
+            height={375}
+            className="md:rounded object-cover"
           />
 
           <p className="w-2/3 text-center mt-6 mb-4">
@@ -85,12 +86,10 @@ const Home: NextPage = () => {
             <BodyText className="my-2">or</BodyText>
 
             <div
-              className="cursor-pointer mb-2 px-2 py-1 border border-slate-500 rounded"
+              className="cursor-pointer mb-2 px-2 py-1 font-bold border border-slate-500 rounded"
               onClick={copyToClipboard}
             >
-              <BodyText className="!text-sm">
-                copy email to clipboard
-              </BodyText>
+              <BodyText className="!text-sm">copy email to clipboard</BodyText>
             </div>
 
             <span
@@ -102,6 +101,13 @@ const Home: NextPage = () => {
                 Copied
               </BodyText>
             </span>
+
+            {/* <div className="md:hidden mt-10">
+              <BodyText>You can also find me on:</BodyText>
+              <div className="flex flex-row justify-center mt-3">
+                <ContactLinks className="text-slate-700 font-bold border border-slate-500 rounded px-2 py-0.5 mx-2" />
+              </div>
+            </div> */}
           </div>
         </div>
       </PageSection>
