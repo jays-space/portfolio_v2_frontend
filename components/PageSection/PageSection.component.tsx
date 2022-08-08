@@ -7,6 +7,7 @@ import { NextSectionIcon } from "./NextSectionIcon";
 
 interface IPageSection {
   title: string;
+  blurb?: string;
   variant?: "hero" | "default";
   cols?: boolean;
   children: ReactNode;
@@ -14,6 +15,7 @@ interface IPageSection {
 
 const PageSection = ({
   title,
+  blurb = "",
   variant = "default",
   cols = false,
   children,
@@ -31,13 +33,9 @@ const PageSection = ({
             className="mt-10 mb-10 text-center"
           />
 
-          <BodyText className="px-10 w-full md:w-2/3">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
-            consectetur repudiandae, quae sunt quisquam aspernatur, inventore
-            repellat tempora sequi non atque dolore, enim mollitia vero ducimus
-            veritatis sit. Vitae, voluptate animi? Reprehenderit quidem cum ut
-            necessitatibus libero illum assumenda placeat.
-          </BodyText>
+          {variant === "hero" && (
+            <BodyText className="px-10 w-full md:w-2/3">{blurb}</BodyText>
+          )}
         </div>
       )}
 

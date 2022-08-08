@@ -2,14 +2,54 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import App from "next/app";
 
 // COMPONENTS
 import { PageSection } from "../components/PageSection";
 import { ProjectGrid } from "../components/ProjectGrid";
 import { BodyText } from "../components/Typography/BodyText";
-import { ContactLinks } from "../components/ContactLinks";
+import { fetchAPI } from "../lib/api";
 
-const Home: NextPage = () => {
+export const getStaticProps = async (context: any) => {
+  const hero = await fetchAPI("/hero-blurb");
+  const about = await fetchAPI("/about-me");
+  const featuredWorks = await fetchAPI("/featured-works");
+  // const notableWorks = await fetchAPI("/works");
+
+  // Pass the data to our page via props
+  return {
+    props: {
+      about: about.data,
+      hero: hero.data,
+      featured: featuredWorks.data,
+      // otherWork: notableWorks.data,
+    },
+  };
+};
+
+interface IHome {
+  hero: {
+    attributes: {
+      blurb: string;
+    };
+  };
+  about: {
+    attributes: {
+      opening: string;
+      middle: string;
+      end: string;
+    };
+  };
+  featured: {
+    attributes: {
+      opening: string;
+      middle: string;
+      end: string;
+    };
+  };
+}
+
+const Home = ({ hero, about }: IHome) => {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -28,7 +68,11 @@ const Home: NextPage = () => {
   return (
     <main className="h-full flex flex-col snap-proximity snap-y">
       {/* hero/featured works section */}
-      <PageSection variant="hero" title="notable work">
+      <PageSection
+        variant="hero"
+        title="notable work"
+        blurb={hero.attributes.blurb}
+      >
         <ProjectGrid />
       </PageSection>
 
@@ -48,23 +92,13 @@ const Home: NextPage = () => {
             height={375}
             className="md:rounded object-cover"
           />
+          <div className="w-2/3 mt-10">
+            <BodyText>{about.attributes.opening}</BodyText>
 
-          <BodyText className="w-2/3 text-center mt-6 mb-10">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            quas molestiae veritatis consectetur? Recusandae porro praesentium
-            ut explicabo sit fugiat.
-          </BodyText>
+            <BodyText className="my-6">{about.attributes.middle}</BodyText>
 
-          <BodyText className="w-2/3 text-center">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia,
-            consectetur nostrum itaque exercitationem repellat recusandae
-            deserunt tempore ex vero ipsam, officiis non sit quae esse tempora
-            assumenda iusto sequi ipsum nisi, pariatur iure aspernatur.
-            Eligendi, officiis ex explicabo est dolores laudantium magnam
-            tenetur esse deserunt pariatur. Obcaecati blanditiis sit ipsum
-            voluptate cum temporibus, quam unde adipisci asperiores labore vero
-            veritatis?
-          </BodyText>
+            {/* <BodyText>{about.attributes.end}</BodyText> */}
+          </div>
         </div>
       </PageSection>
 

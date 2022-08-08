@@ -9,13 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
+    "graphql": "^16.5.0",
     "next": "12.2.3",
+    "qs": "^6.11.0",
     "react": "18.2.0",
+    "react-apollo": "^3.1.5",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0"
   },
   "devDependencies": {
     "@types/node": "18.6.3",
+    "@types/qs": "^6.9.7",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.8",
