@@ -1,8 +1,9 @@
 import { useState } from "react";
-import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import App from "next/app";
+
+// TYPES
+import { WorksType, HeroType } from "../types/types";
 
 // COMPONENTS
 import { PageSection } from "../components/PageSection";
@@ -28,11 +29,7 @@ export const getStaticProps = async (context: any) => {
 };
 
 interface IHome {
-  hero: {
-    attributes: {
-      blurb: string;
-    };
-  };
+  hero: HeroType;
   about: {
     attributes: {
       opening: string;
@@ -40,17 +37,13 @@ interface IHome {
       end: string;
     };
   };
-  featured: {
-    attributes: {
-      opening: string;
-      middle: string;
-      end: string;
-    };
-  };
+  featured: WorksType;
 }
 
-const Home = ({ hero, about }: IHome) => {
+const Home = ({ hero, about, featured }: IHome) => {
   const [copied, setCopied] = useState(false);
+
+  console.log(featured);
 
   const copyToClipboard = async () => {
     navigator.clipboard.writeText("contact.jays.space@gmail.com");
@@ -73,7 +66,7 @@ const Home = ({ hero, about }: IHome) => {
         title="notable work"
         blurb={hero.attributes.blurb}
       >
-        <ProjectGrid />
+        <ProjectGrid projects={featured} />
       </PageSection>
 
       {/* notable works section */}

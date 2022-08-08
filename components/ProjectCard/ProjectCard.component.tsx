@@ -1,16 +1,19 @@
 import Image from "next/image";
 import React from "react";
 
+// TYPES
+import { TechStackType } from "../../types/types";
+
 // COMPONENTS
 import { BodyText } from "../Typography/BodyText";
 
-const techStack = ["react", "aws", "tailwind css"];
-
 interface IProjectCard {
+  description: string;
+  techStack: TechStackType;
   cols?: boolean;
 }
 
-const ProjectCard = ({ cols }: IProjectCard) => {
+const ProjectCard = ({ description, techStack, cols }: IProjectCard) => {
   return (
     <div
       className={`${
@@ -29,20 +32,18 @@ const ProjectCard = ({ cols }: IProjectCard) => {
         />
       </div>
 
-      <div className="py-4 px-6">
+      <div className="flex flex-col justify-between items-center h-56 mt-4 py-4 px-6 ">
         {/* description */}
-        <BodyText className="mb-6 tracking-wide leading-normal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo illum
-          facilis exercitationem ea non nulla dicta mollitia iure, rem
-          aspernatur?
+        <BodyText className="tracking-wide leading-normal">
+          {description}
         </BodyText>
 
         {/* text stack */}
-        <div className="flex flex-row pb-2">
+        <div className="flex flex-row flex-wrap justify-center pb-2">
           {techStack.map((stack, index) => (
-            <span key={index} className="mr-2 text-sm text-slate-700">
+            <BodyText key={index} className="mr-4 !text-sm !text-left text-slate-700">
               {stack}
-            </span>
+            </BodyText>
           ))}
         </div>
       </div>
