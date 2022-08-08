@@ -13,6 +13,7 @@ export type AboutType = {
 export type TechStackType = string[];
 
 export type Work = {
+  id: number;
   attributes: {
     title: string;
     description: string;
