@@ -1,22 +1,57 @@
 import Image from "next/image";
 import React from "react";
 
+// API
+import { fetchAPI } from "../../lib/api";
+
 // TYPES
 import { Work } from "../../types/types";
 
 // COMPONENTS
 import { BodyText } from "../../components/Typography/BodyText";
+import { GetStaticProps } from "next";
+import { Heading } from "../../components/Typography/Heading";
 
-const getStaticPaths = async () => {};
+export const getStaticPaths = async () => {
+  const featuredWorks = await fetchAPI("/featured-works");
+  const paths = featuredWorks.data.map((work: Work) => ({
+    params: {
+      id: work.id.toString(),
+    },
+  }));
+
+  console.log(paths);
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const featuredWork = await fetchAPI(`/featured-works/${params?.id}`);
+
+  return {
+    props: { project: featuredWork.data },
+  };
+};
 
 interface IFeaturedWorkPage {
   project: Work;
 }
 
-const FeaturedWorkPage = ({ project }) => {
+const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
   return (
     <main className="min-h-screen flex flex-col ">
       <div className="w-full flex flex-col justify-center items-center max-w-screen-xl self-center">
+        {/* title */}
+        <Heading
+          variant="h2"
+          title={project?.attributes?.description}
+          className="mb-10"
+        />
+
+        {/* cover image */}
         <Image
           src="/images/img.jpg"
           alt="dashboard"
@@ -26,7 +61,36 @@ const FeaturedWorkPage = ({ project }) => {
           className="rounded-lg object-cover"
         />
 
-        <BodyText>{}</BodyText>
+        <div className="w-2/3">
+          {/* description + tech stack*/}
+          <div className="grid grid-cols-3 gap-6">
+            <div className="col-span-2">
+              <Heading
+                variant="h3"
+                title={project?.attributes?.description}
+                className="my-10"
+              />
+            </div>
+
+            <div className="flex flex-row flex-wrap justify-start items-start">
+              {project?.attributes?.techStack.map((tech, index) => {
+                return (
+                  <BodyText
+                    key={index}
+                    className="mr-4 !text-sm !text-left text-slate-700"
+                  >
+                    {tech}
+                  </BodyText>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* approach */}
+          <div className="my-20">
+            <BodyText>{project?.attributes?.approach}</BodyText>
+          </div>
+        </div>
       </div>
     </main>
   );

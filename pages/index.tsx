@@ -2,6 +2,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// API
+import { fetchAPI } from "../lib/api";
+
 // TYPES
 import { WorksType, HeroType } from "../types/types";
 
@@ -9,7 +12,6 @@ import { WorksType, HeroType } from "../types/types";
 import { PageSection } from "../components/PageSection";
 import { ProjectGrid } from "../components/ProjectGrid";
 import { BodyText } from "../components/Typography/BodyText";
-import { fetchAPI } from "../lib/api";
 
 export const getStaticProps = async (context: any) => {
   const hero = await fetchAPI("/hero-blurb");
