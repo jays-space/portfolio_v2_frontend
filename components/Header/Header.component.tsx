@@ -22,8 +22,8 @@ const Header = () => {
   return (
     <header
       className={`${
-        isMenuOpen ? "fixed bg-red-500 h-screen" : "sticky bg-stone-100"
-      } 2xl:bg-transparent top-0 left-0 w-screen flex flex-col justify-center items-center my-10 z-50`}
+        isMenuOpen ? "fixed bg-red-500 h-full" : "sticky bg-stone-100"
+      } 2xl:bg-transparent top-0 left-0 w-screen flex flex-col justify-center items-center md:my-10 z-50`}
     >
       <div
         className={`${
@@ -59,16 +59,16 @@ const Header = () => {
           {isMenuOpen ? (
             <div
               onClick={toggleMenu}
-              className="border-2 border-white rounded px-5 py-2"
+              className="border-2 border-white rounded px-5 py-2 z-20"
             >
               <BodyText className="!font-bold !text-white">Work</BodyText>
             </div>
           ) : (
             <div
               onClick={toggleMenu}
-              className="bg-red-500 border-2 border-white rounded px-3 py-2"
+              className="bg-red-500 rounded px-3 py-2 z-20"
             >
-              <BodyText className="!font-bold text-white">Contact</BodyText>
+              <BodyText className="!font-bold !text-white">Contact</BodyText>
             </div>
           )}
         </nav>
@@ -76,13 +76,11 @@ const Header = () => {
 
       {isMenuOpen && (
         <div
-          className={`flex flex-col justify-center items-center h-screen ${
-            isMenuOpen
-              ? "pointer-events-none"
-              : "-z-10 fixed top-0 bottom-0 left-0 right-0 opacity-0"
-          }`}
+          className={`flex flex-col justify-center items-center h-full
+            
+          `}
         >
-          <ContactLinks className="flex flex-col text-white font-bold text-2xl my-2 last-of-type:border-2 border-white px-4 py-2 rounded" />
+          <ContactLinks email className="flex flex-col text-white font-bold text-2xl my-2 last-of-type:border-2 border-white px-4 py-2 rounded" />
         </div>
       )}
     </header>

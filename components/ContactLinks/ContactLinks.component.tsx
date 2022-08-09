@@ -36,15 +36,6 @@ const ContactLinks = ({
           </a>
         </Link>
       ))}
-
-      {email && (
-        <span
-          className={`${className} cursor-pointer`}
-          onClick={copyToClipboard}
-        >
-          Email
-        </span>
-      )}
     </>
   );
 };

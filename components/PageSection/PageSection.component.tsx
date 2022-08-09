@@ -27,7 +27,7 @@ const PageSection = ({
       } min-h-screen flex flex-col justify-center items-center max-w-screen-xl self-center snap-start`}
     >
       {variant === "hero" && (
-        <div className="mb-24 flex flex-col items-center">
+        <div className="mb-10 md:mb-24 flex flex-col items-center">
           <Heading
             title="I build things for the web"
             className="mt-10 mb-10 text-center"

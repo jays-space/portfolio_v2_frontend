@@ -111,21 +111,21 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
               </a>
             </Link>
 
-            <BodyText className="my-2">or</BodyText>
+            <BodyText className="hidden lg:flex my-2">or</BodyText>
 
             <div
-              className="cursor-pointer mb-2 px-2 py-1 font-bold border border-slate-500 rounded"
+              className="hidden lg:flex cursor-pointer mb-2 px-2 py-1 font-bold border border-slate-500 rounded"
               onClick={copyToClipboard}
             >
               <BodyText className="!text-sm">copy email to clipboard</BodyText>
             </div>
 
             <span
-              className={`px-2 py-1 bg-green-500 rounded transition-opacity duration-300 ${
+              className={`px-2 py-1 bg-green-400 rounded transition-opacity duration-300 ${
                 copied ? "opacity-100" : "opacity-0"
               }`}
             >
-              <BodyText className={`text-xs text-center text-white`}>
+              <BodyText className={`text-xs text-center !text-white`}>
                 Copied
               </BodyText>
             </span>
