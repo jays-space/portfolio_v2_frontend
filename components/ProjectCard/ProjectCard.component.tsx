@@ -10,12 +10,13 @@ import { BodyText } from "../Typography/BodyText";
 
 interface IProjectCard {
   project: Work;
+  variant?: "featured" | "other";
   cols?: boolean;
 }
 
-const ProjectCard = ({ project, cols }: IProjectCard) => {
+const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
   return (
-    <Link href={`/work/${project?.id}`}>
+    <Link href={`/${variant === 'featured' ? 'featured' : 'projects'}/${project?.id}`}>
       <div
         className={`${
           cols && "col-span-2 row-span-2"

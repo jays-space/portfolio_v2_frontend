@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
 
@@ -31,20 +32,24 @@ const Header = () => {
           !isMenuOpen && "shadow-lg md:shadow-none"
         }`}
       >
-        <div className="flex flex-col">
-          <Heading
-            variant="h2"
-            title="jay's space"
-            className={`font-extrabold !text-2xl md:!text-3xl lg:!text-4xl lg:mb-2 ${
-              isMenuOpen ? " !text-white" : "!text-red-500"
-            }`}
-          />
-          <Heading
-            variant="h4"
-            title="developer portfolio"
-            className={`${isMenuOpen && "!text-white"} !text-sm md:!text-base`}
-          />
-        </div>
+        <Link href={"/"}>
+          <div className="flex flex-col cursor-pointer">
+            <Heading
+              variant="h2"
+              title="jay's space"
+              className={`font-extrabold !text-2xl md:!text-3xl lg:!text-4xl lg:mb-2 ${
+                isMenuOpen ? " !text-white" : "!text-red-500"
+              }`}
+            />
+            <Heading
+              variant="h4"
+              title="developer portfolio"
+              className={`${
+                isMenuOpen && "!text-white"
+              } !text-sm md:!text-base`}
+            />
+          </div>
+        </Link>
 
         <nav className="hidden md:flex flex-row">
           <ContactLinks className="text-lg text-slate-700 mr-4 font-bold last-of-type:mr-0 last-of-type:text-white last-of-type:border last-of-type:bg-red-500 rounded px-3 py-2" />
