@@ -80,7 +80,10 @@ const Header = () => {
             
           `}
         >
-          <ContactLinks email className="flex flex-col text-white font-bold text-2xl my-2 last-of-type:border-2 border-white px-4 py-2 rounded" />
+          <ContactLinks
+            email
+            className="flex flex-col text-white font-bold text-2xl my-2 last-of-type:border-2 border-white px-4 py-2 rounded"
+          />
         </div>
       )}
     </header>

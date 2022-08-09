@@ -13,6 +13,6 @@ export const LINKS = [
   },
   {
     label: "Resume",
-    to: "https://onedrive.live.com/download?cid=A9F3F801B0CA785E&resid=A9F3F801B0CA785E%21272&authkey=ACni6xK_dcdK7wA&em=2",
+    to: "https://1drv.ms/b/s!Al54yrAB-POpghFhbtOYlmgu4MPn",
   },
 ];

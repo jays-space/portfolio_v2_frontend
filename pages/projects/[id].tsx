@@ -75,7 +75,7 @@ const NotableProject = ({ project }: INotableProject) => {
                   return (
                     <BodyText
                       key={index}
-                      className="mr-4 !text-sm !text-left text-slate-700"
+                      className="mr-4 !text-left text-slate-700"
                     >
                       {tech}
                     </BodyText>
