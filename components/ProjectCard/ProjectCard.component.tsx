@@ -7,6 +7,7 @@ import { Work } from "../../types/types";
 
 // COMPONENTS
 import { BodyText } from "../Typography/BodyText";
+import { Heading } from "../Typography/Heading";
 
 interface IProjectCard {
   project: Work;
@@ -34,23 +35,29 @@ const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
           />
         </div>
 
-        <div className="flex flex-col justify-between items-center h-56 mt-4 py-4 px-6 ">
+        <div className="flex flex-col justify-between items-center py-4 px-6 ">
+          {/* title */}
+          {/* <Heading variant="h4" title={project?.attributes?.title} className='mb-2 text-center' />           */}
+          <BodyText className="!tracking-wide !leading-relaxed max-w-prose font-bold">
+            {project?.attributes?.title}
+          </BodyText>
+
           {/* description */}
-          <BodyText className="tracking-wide leading-normal">
-            {project?.attributes?.description}
+          <BodyText className="!text-sm !tracking-wide !leading-relaxed max-w-prose my-5">
+            {project?.attributes?.subtitle}
           </BodyText>
 
           {/* text stack */}
-          <div className="flex flex-row flex-wrap justify-center pb-2">
+          {/* <div className="flex flex-row flex-wrap justify-center pb-2">
             {project?.attributes?.techStack.map((tech, index) => (
               <BodyText
                 key={index}
-                className="mr-4 !text-sm !text-left text-slate-700"
+                className="mr-2 !text-xs !text-left text-slate-700"
               >
                 {tech}
               </BodyText>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>

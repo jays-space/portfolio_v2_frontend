@@ -16,6 +16,8 @@ export type Work = {
   id: number;
   attributes: {
     title: string;
+    subtitle: string;
+    headline: string;
     description: string;
     approach: string;
     techStack: TechStackType;
