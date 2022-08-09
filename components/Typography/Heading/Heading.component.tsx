@@ -20,10 +20,10 @@ const IHeading = ({ title, variant, className = undefined }: IHeading) => {
       return <h2 className={`${styles} ${className} text-3xl leading-relaxed tracking-wider`}>{title}</h2>;
 
     case "h1":
-      return <h1 className={`${styles} ${className} font-extrabold text-4xl tracking-wide`}>{title}</h1>;
+      return <h1 className={`${styles} ${className} font-extrabold text-4xl leading-relaxed  tracking-wide`}>{title}</h1>;
 
     default:
-      return <h1 className={`${styles} ${className} font-extrabold text-4xl tracking-wide`}>{title}</h1>;
+      return <h1 className={`${styles} ${className} font-extrabold text-4xl leading-relaxed  tracking-wide`}>{title}</h1>;
   }
 };
 
