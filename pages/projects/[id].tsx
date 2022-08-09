@@ -15,8 +15,8 @@ import { GetStaticProps } from "next";
 import { Heading } from "../../components/Typography/Heading";
 
 export const getStaticPaths = async () => {
-  const featuredWorks = await fetchAPI("/featured-works");
-  const paths = featuredWorks.data.map((work: Work) => ({
+  const works = await fetchAPI("/works");
+  const paths = works.data.map((work: Work) => ({
     params: {
       id: work.id.toString(),
     },
@@ -29,18 +29,18 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const featuredWork = await fetchAPI(`/featured-works/${params?.id}`);
+  const work = await fetchAPI(`/works/${params?.id}`);
 
   return {
-    props: { project: featuredWork.data },
+    props: { project: work.data },
   };
 };
 
-interface IFeaturedWorkPage {
+interface INotableProject {
   project: Work;
 }
 
-const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
+const NotableProject = ({ project }: INotableProject) => {
   return (
     <main className="min-h-screen flex flex-col ">
       <div className="w-full flex flex-col justify-center items-center max-w-screen-xl self-center">
@@ -98,4 +98,4 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
   );
 };
 
-export default FeaturedWorkPage;
+export default NotableProject;

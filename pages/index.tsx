@@ -72,7 +72,7 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
 
       {/* notable works section */}
       <PageSection title="other projects">
-        <ProjectGrid projects={otherWork} />
+        <ProjectGrid variant="other" projects={otherWork} />
       </PageSection>
 
       {/* about section */}
