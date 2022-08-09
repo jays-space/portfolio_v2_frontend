@@ -41,12 +41,12 @@ const ProjectCard = ({ project, cols }: IProjectCard) => {
 
           {/* text stack */}
           <div className="flex flex-row flex-wrap justify-center pb-2">
-            {project?.attributes?.techStack.map((stack, index) => (
+            {project?.attributes?.techStack.map((tech, index) => (
               <BodyText
                 key={index}
                 className="mr-4 !text-sm !text-left text-slate-700"
               >
-                {stack}
+                {tech}
               </BodyText>
             ))}
           </div>

@@ -1,5 +1,7 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import ReactDom from "react-dom";
 
 // API
 import { fetchAPI } from "../../lib/api";
@@ -19,8 +21,6 @@ export const getStaticPaths = async () => {
       id: work.id.toString(),
     },
   }));
-
-  console.log(paths);
 
   return {
     paths,
@@ -47,8 +47,8 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
         {/* title */}
         <Heading
           variant="h2"
-          title={project?.attributes?.description}
-          className="mb-10"
+          title={project?.attributes?.title}
+          className="mb-10 w-2/3 text-center"
         />
 
         {/* cover image */}
@@ -87,8 +87,11 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
           </div>
 
           {/* approach */}
-          <div className="my-20">
-            <BodyText>{project?.attributes?.approach}</BodyText>
+          <div className="my-20 flex flex-col justify-center items-center w-full">
+            <ReactMarkdown
+              children={project?.attributes?.approach}
+              className="prose"
+            />
           </div>
         </div>
       </div>

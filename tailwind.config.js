@@ -7,10 +7,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Raleway",],
-        fancy: ['Ruthie', "cursive"],
+        sans: ["Raleway"],
+        fancy: ["Ruthie", "cursive"],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ...
+  ],
 };
