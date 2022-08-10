@@ -152,7 +152,7 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
               </div>
 
               <span
-                className={`px-2 py-1 bg-green-400 rounded transition-opacity duration-300 ${
+                className={`px-2 py-1 bg-green-500 rounded transition-opacity duration-300 ${
                   copied ? "opacity-100" : "opacity-0"
                 }`}
               >
