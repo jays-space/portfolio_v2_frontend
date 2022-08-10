@@ -18,7 +18,7 @@ const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
   return (
     <Link
       href={`/${variant === "featured" ? "featured" : "projects"}/${
-        project?.id
+        project?.attributes?.slug
       }`}
     >
       <div

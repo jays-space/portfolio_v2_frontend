@@ -14,7 +14,7 @@ import { ProjectGrid } from "../components/ProjectGrid";
 import { BodyText } from "../components/Typography/BodyText";
 import { NextImage } from "../components/NextImage";
 
-export const getStaticProps = async (context: any) => {
+export const getStaticProps = async () => {
   const hero = await fetchAPI("/hero-blurb");
   const about = await fetchAPI("/about-me", {
     populate: {
@@ -68,8 +68,6 @@ interface IHome {
 
 const Home = ({ hero, about, featured, otherWork }: IHome) => {
   const [copied, setCopied] = useState(false);
-
-  console.log(about);
 
   const copyToClipboard = async () => {
     navigator.clipboard.writeText("contact.jays.space@gmail.com");

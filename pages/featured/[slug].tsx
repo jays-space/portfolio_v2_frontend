@@ -19,7 +19,7 @@ export const getStaticPaths = async () => {
   const featuredWorks = await fetchAPI("/featured-works");
   const paths = featuredWorks.data.map((work: Work) => ({
     params: {
-      id: work.id.toString(),
+      slug: work?.attributes?.slug,
     },
   }));
 
@@ -30,7 +30,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const featuredWork = await fetchAPI(`/featured-works/${params?.id}`, {
+  const featuredWork = await fetchAPI(`/featured-works`, {
+    filters: {
+      slug: params?.slug,
+    },
     populate: {
       coverImage: "*",
       image1: "*",
@@ -42,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   });
 
   return {
-    props: { project: featuredWork.data },
+    props: { project: featuredWork.data[0] },
   };
 };
 

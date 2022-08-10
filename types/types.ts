@@ -16,6 +16,7 @@ export type Work = {
   id: number;
   attributes: {
     title: string;
+    slug: string;
     subtitle: string;
     headline: string;
     description: string;
