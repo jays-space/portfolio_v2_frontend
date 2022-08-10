@@ -20,6 +20,7 @@ export type Work = {
     headline: string;
     description: string;
     approach: string;
+    problemSolved?: string;
     techStack: TechStackType;
   };
 };

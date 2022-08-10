@@ -48,7 +48,7 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
         <Heading
           variant="h1"
           title={project?.attributes?.headline}
-          className="mb-10 w-2/3 text-center"
+          className="my-10 mx-10 md:mx-0 md:w-2/3 text-center"
         />
 
         {/* cover image */}
@@ -63,13 +63,21 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
 
         <div className="mx-10 lg:mx-24">
           {/* description + tech stack*/}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-10 mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-10 mt-10 md:mt-20">
             <div className="col-span-2">
               <Heading
-                variant="h2"
+                variant="h3"
                 title={project?.attributes?.description}
                 capitalize={false}
               />
+              {project?.attributes?.problemSolved && (
+                <Heading
+                  variant="h3"
+                  title={project?.attributes?.problemSolved}
+                  capitalize={false}
+                  className="text-red-500 font-bold mt-5"
+                />
+              )}
             </div>
 
             <div>
