@@ -19,7 +19,7 @@ const ProjectDescriptionSection = ({
           variant="h3"
           title={problemSolved}
           capitalize={false}
-          className="text-red-500 font-bold mt-5"
+          className="!text-red-500 font-bold mt-5"
         />
       )}
     </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 // API
 import { fetchAPI } from "../lib/api";
@@ -82,79 +83,88 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
   };
 
   return (
-    <main className="h-full flex flex-col snap-proximity snap-y">
-      {/* hero/featured works section */}
-      <PageSection
-        variant="hero"
-        title="notable work"
-        blurb={hero.attributes.blurb}
-      >
-        <ProjectGrid projects={featured} />
-      </PageSection>
+    <>
+      <Head>
+        <title>Jay&apos;s Space | Fullstack AWS Developer</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      {/* notable works section */}
-      <PageSection title="other projects">
-        <ProjectGrid variant="other" projects={otherWork} />
-      </PageSection>
+      <main className="h-full flex flex-col snap-proximity snap-y">
+        {/* hero/featured works section */}
+        <PageSection
+          variant="hero"
+          title="notable work"
+          blurb={hero.attributes.blurb}
+        >
+          <ProjectGrid projects={featured} />
+        </PageSection>
 
-      {/* about section */}
-      <PageSection title="about">
-        <div className="flex flex-col justify-center items-center">
-          {/* image */}
-          <NextImage image={about.attributes?.avatar} priority />
+        {/* notable works section */}
+        <PageSection title="other projects">
+          <ProjectGrid variant="other" projects={otherWork} />
+        </PageSection>
 
-          <div className="w-2/3 mt-10">
-            <BodyText className="mb-2">
-              Hi, my name is{" "}
-              <span className="text-red-500 font-bold">Jay!</span>
+        {/* about section */}
+        <PageSection title="about">
+          <div className="flex flex-col justify-center items-center">
+            {/* image */}
+            <NextImage image={about.attributes?.avatar} priority about />
+
+            <div className="w-2/3 mt-10">
+              <BodyText className="mb-2">
+                Hi, my name is{" "}
+                <span className="text-red-500 font-bold">Jay!</span>
+              </BodyText>
+
+              <BodyText>{about.attributes.opening}</BodyText>
+
+              <BodyText className="my-6">{about.attributes.middle}</BodyText>
+
+              <BodyText>{about.attributes.end}</BodyText>
+            </div>
+          </div>
+        </PageSection>
+
+        {/* contact section */}
+        <PageSection title="contact">
+          <div className="flex flex-col justify-center items-center">
+            <BodyText className="mb-10 w-2/3">
+              My inbox is always open. Whether you have a question or just want
+              to say hi, give me a shout.
             </BodyText>
 
-            <BodyText>{about.attributes.opening}</BodyText>
+            <div className="mt-5 flex flex-col justify-center items-center">
+              <Link href="mailto:contact.jays.space@gmail.com">
+                <a className="mx-2 py-2 px-4 text-white capitalize font-bold bg-red-500 rounded">
+                  shout out
+                </a>
+              </Link>
 
-            <BodyText className="my-6">{about.attributes.middle}</BodyText>
+              <BodyText className="hidden lg:flex my-2">or</BodyText>
 
-            <BodyText>{about.attributes.end}</BodyText>
-          </div>
-        </div>
-      </PageSection>
+              <div
+                className="hidden lg:flex cursor-pointer mb-2 px-2 py-1 font-bold border border-slate-500 rounded"
+                onClick={copyToClipboard}
+              >
+                <BodyText className="!text-sm">
+                  copy email to clipboard
+                </BodyText>
+              </div>
 
-      {/* contact section */}
-      <PageSection title="contact">
-        <div className="flex flex-col justify-center items-center">
-          <BodyText className="mb-10 w-2/3">
-            My inbox is always open. Whether you have a question or just want to
-            say hi, give me a shout.
-          </BodyText>
-
-          <div className="mt-5 flex flex-col justify-center items-center">
-            <Link href="mailto:contact.jays.space@gmail.com">
-              <a className="mx-2 py-2 px-4 text-white capitalize font-bold bg-red-500 rounded">
-                shout out
-              </a>
-            </Link>
-
-            <BodyText className="hidden lg:flex my-2">or</BodyText>
-
-            <div
-              className="hidden lg:flex cursor-pointer mb-2 px-2 py-1 font-bold border border-slate-500 rounded"
-              onClick={copyToClipboard}
-            >
-              <BodyText className="!text-sm">copy email to clipboard</BodyText>
+              <span
+                className={`px-2 py-1 bg-green-400 rounded transition-opacity duration-300 ${
+                  copied ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <BodyText className={`text-xs text-center !text-white`}>
+                  Copied
+                </BodyText>
+              </span>
             </div>
-
-            <span
-              className={`px-2 py-1 bg-green-400 rounded transition-opacity duration-300 ${
-                copied ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <BodyText className={`text-xs text-center !text-white`}>
-                Copied
-              </BodyText>
-            </span>
           </div>
-        </div>
-      </PageSection>
-    </main>
+        </PageSection>
+      </main>
+    </>
   );
 };
 
