@@ -47,7 +47,7 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
         {/* title */}
         <Heading
           variant="h1"
-          title={project?.attributes?.title}
+          title={project?.attributes?.headline}
           className="mb-10 w-2/3 text-center"
         />
 

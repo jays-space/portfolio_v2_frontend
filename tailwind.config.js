@@ -10,6 +10,9 @@ module.exports = {
         sans: ["Raleway", "sans"],
         fancy: ["Ruthie", "cursive"],
       },
+      minHeight: {
+        52: "13rem",
+      },
     },
   },
   plugins: [

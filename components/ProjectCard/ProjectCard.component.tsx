@@ -35,9 +35,8 @@ const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
           />
         </div>
 
-        <div className="flex flex-col justify-between items-center py-4 px-6 ">
+        <div className="min-h-52 flex flex-col justify-between items-center py-4 px-6">
           {/* title */}
-          {/* <Heading variant="h4" title={project?.attributes?.title} className='mb-2 text-center' />           */}
           <BodyText className="!tracking-wide !leading-relaxed max-w-prose font-bold">
             {project?.attributes?.title}
           </BodyText>
@@ -48,16 +47,17 @@ const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
           </BodyText>
 
           {/* text stack */}
-          {/* <div className="flex flex-row flex-wrap justify-center pb-2">
+          <div className="w-full flex flex-row flex-wrap justify-center">
+            <hr className="w-full border border-red-400 rounded-lg mb-2" />
             {project?.attributes?.techStack.map((tech, index) => (
               <BodyText
                 key={index}
-                className="mr-2 !text-xs !text-left text-slate-700"
+                className="mr-2 !text-xs !text-left text-slate-700 lowercase"
               >
                 {tech}
               </BodyText>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </Link>
