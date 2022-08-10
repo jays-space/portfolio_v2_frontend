@@ -52,7 +52,7 @@ const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
             {project?.attributes?.techStack.map((tech, index) => (
               <BodyText
                 key={index}
-                className="mr-2 !text-xs !text-left text-slate-700 lowercase"
+                className="mr-2 !text-xs !text-left text-slate-700 !lowercase"
               >
                 {tech}
               </BodyText>

@@ -1,18 +1,18 @@
 import React from "react";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import ReactDom from "react-dom";
 
 // API
 import { fetchAPI } from "../../lib/api";
 
 // TYPES
 import { Work } from "../../types/types";
+import { GetStaticProps } from "next";
 
 // COMPONENTS
-import { BodyText } from "../../components/Typography/BodyText";
-import { GetStaticProps } from "next";
-import { Heading } from "../../components/Typography/Heading";
+import { ProjectHeadline } from "../../components/ProjectPage/ProjectHeadline";
+import { ProjectDescriptionSection } from "../../components/ProjectPage/ProjectDescriptionSection";
+import { TechStackSection } from "../../components/ProjectPage/TechStackSection";
+import { MainContent } from "../../components/ProjectPage/MainContent";
 
 export const getStaticPaths = async () => {
   const works = await fetchAPI("/works");
@@ -44,12 +44,8 @@ const NotableProject = ({ project }: INotableProject) => {
   return (
     <main className="min-h-screen flex flex-col ">
       <div className="w-full flex flex-col justify-center items-center max-w-screen-xl self-center">
-        {/* title */}
-        <Heading
-          variant="h1"
-          title={project?.attributes?.title}
-          className="mb-10 w-2/3 text-center"
-        />
+        {/* headline */}
+        <ProjectHeadline headline={project?.attributes?.headline} />
 
         {/* cover image */}
         <Image
@@ -63,35 +59,19 @@ const NotableProject = ({ project }: INotableProject) => {
 
         <div className="mx-10 lg:mx-24">
           {/* description + tech stack*/}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-10 mt-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-10 mt-10 md:mt-20">
             <div className="col-span-2">
-              <Heading variant="h2" title={project?.attributes?.description} />
+              <ProjectDescriptionSection
+                description={project?.attributes?.description}
+                problemSolved={project?.attributes?.problemSolved}
+              />
             </div>
 
-            <div>
-              <Heading variant="h4" title="tech stack" className="mb-2 !text-sm font-bold opacity-80" />
-              <div className="flex flex-row flex-wrap justify-start items-center">
-                {project?.attributes?.techStack.map((tech, index) => {
-                  return (
-                    <BodyText
-                      key={index}
-                      className="mr-4 !text-left text-slate-700"
-                    >
-                      {tech}
-                    </BodyText>
-                  );
-                })}
-              </div>
-            </div>
+            <TechStackSection techStack={project?.attributes?.techStack} />
           </div>
 
           {/* approach */}
-          <div className="my-20 flex flex-col justify-center items-center w-full">
-            <ReactMarkdown
-              children={project?.attributes?.approach}
-              className="prose prose-slate prose-headings:text-slate-700 prose-h3:text-2xl text-slate-700"
-            />
-          </div>
+          <MainContent content={project?.attributes?.approach} />
         </div>
       </div>
     </main>
