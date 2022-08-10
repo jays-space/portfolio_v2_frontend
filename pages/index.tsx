@@ -87,11 +87,13 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
             className="md:rounded object-cover"
           />
           <div className="w-2/3 mt-10">
+            <BodyText className="mb-2">Hi, my name is <span className="text-red-500 font-bold">Jay!</span></BodyText>
+
             <BodyText>{about.attributes.opening}</BodyText>
 
             <BodyText className="my-6">{about.attributes.middle}</BodyText>
 
-            {/* <BodyText>{about.attributes.end}</BodyText> */}
+            <BodyText>{about.attributes.end}</BodyText>
           </div>
         </div>
       </PageSection>
