@@ -13,6 +13,7 @@ import { ProjectHeadline } from "../../components/ProjectPage/ProjectHeadline";
 import { ProjectDescriptionSection } from "../../components/ProjectPage/ProjectDescriptionSection";
 import { TechStackSection } from "../../components/ProjectPage/TechStackSection";
 import { MainContent } from "../../components/ProjectPage/MainContent";
+import { NextImage } from "../../components/NextImage";
 
 export const getStaticPaths = async () => {
   const works = await fetchAPI("/works");
@@ -29,7 +30,14 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const work = await fetchAPI(`/works/${params?.id}`);
+  const work = await fetchAPI(`/works/${params?.id}`, {
+    populate: {
+      coverImage: "*",
+      defaultSeo: {
+        populate: "*",
+      },
+    },
+  });
 
   return {
     props: { project: work.data },
@@ -48,14 +56,7 @@ const NotableProject = ({ project }: INotableProject) => {
         <ProjectHeadline headline={project?.attributes?.headline} />
 
         {/* cover image */}
-        <Image
-          src="/images/img.jpg"
-          alt="dashboard"
-          layout="intrinsic"
-          width={1080}
-          height={600}
-          className="lg:rounded-lg object-cover"
-        />
+        <NextImage image={project?.attributes?.coverImage} priority />
 
         <div className="mx-10 lg:mx-24">
           {/* description + tech stack*/}

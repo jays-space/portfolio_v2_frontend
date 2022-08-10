@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -6,8 +5,8 @@ import React from "react";
 import { Work } from "../../types/types";
 
 // COMPONENTS
+import { NextImage } from "../NextImage";
 import { BodyText } from "../Typography/BodyText";
-import { Heading } from "../Typography/Heading";
 
 interface IProjectCard {
   project: Work;
@@ -17,23 +16,18 @@ interface IProjectCard {
 
 const ProjectCard = ({ project, variant = "featured", cols }: IProjectCard) => {
   return (
-    <Link href={`/${variant === 'featured' ? 'featured' : 'projects'}/${project?.id}`}>
+    <Link
+      href={`/${variant === "featured" ? "featured" : "projects"}/${
+        project?.id
+      }`}
+    >
       <div
         className={`${
           cols && "col-span-2 row-span-2"
         } mx-4 shadow-xl rounded-lg bg-white cursor-pointer`}
       >
         {/* thumbnail */}
-        <div className="aspect-video">
-          <Image
-            src="/images/img.jpg"
-            alt="dashboard"
-            layout="responsive"
-            width={375}
-            height={240}
-            className="rounded-t-lg object-cover"
-          />
-        </div>
+        <NextImage image={project.attributes?.thumbnail} thumbnail />
 
         <div className="min-h-52 flex flex-col justify-between items-center py-4 px-6">
           {/* title */}

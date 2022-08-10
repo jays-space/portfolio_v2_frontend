@@ -2,7 +2,7 @@ import qs from "qs";
 
 export const getURL = (path = "") => {
   return `${
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:1337"
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
   }${path}`;
 };
 
@@ -40,5 +40,11 @@ export const fetchAPI = async (
 export function getMedia(media: any) {
   const { url } = media.data.attributes;
   const imageUrl = url.startsWith("/") ? getURL(url) : url;
+  return imageUrl;
+}
+
+export function getLoaderMedia(media: any) {
+  const { url, formats } = media.data.attributes;
+  const imageUrl = url.startsWith("/") ? getURL(`${formats?.large?.url}`) : url;
   return imageUrl;
 }

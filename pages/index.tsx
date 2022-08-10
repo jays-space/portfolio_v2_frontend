@@ -1,23 +1,44 @@
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 // API
 import { fetchAPI } from "../lib/api";
 
 // TYPES
-import { WorksType, HeroType } from "../types/types";
+import { WorksType, HeroType, StrapiImageType } from "../types/types";
 
 // COMPONENTS
 import { PageSection } from "../components/PageSection";
 import { ProjectGrid } from "../components/ProjectGrid";
 import { BodyText } from "../components/Typography/BodyText";
+import { NextImage } from "../components/NextImage";
 
 export const getStaticProps = async (context: any) => {
   const hero = await fetchAPI("/hero-blurb");
-  const about = await fetchAPI("/about-me");
-  const featuredWorks = await fetchAPI("/featured-works");
-  const notableWorks = await fetchAPI("/works");
+  const about = await fetchAPI("/about-me", {
+    populate: {
+      avatar: "*",
+      defaultSeo: {
+        populate: "*",
+      },
+    },
+  });
+  const featuredWorks = await fetchAPI("/featured-works", {
+    populate: {
+      thumbnail: "*",
+      defaultSeo: {
+        populate: "*",
+      },
+    },
+  });
+  const notableWorks = await fetchAPI("/works", {
+    populate: {
+      thumbnail: "*",
+      defaultSeo: {
+        populate: "*",
+      },
+    },
+  });
 
   // Pass the data to our page via props
   return {
@@ -34,6 +55,7 @@ interface IHome {
   hero: HeroType;
   about: {
     attributes: {
+      avatar: StrapiImageType;
       opening: string;
       middle: string;
       end: string;
@@ -78,16 +100,14 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
       {/* about section */}
       <PageSection title="about">
         <div className="flex flex-col justify-center items-center">
-          <Image
-            src="/images/img.jpg"
-            alt="dashboard"
-            layout="intrinsic"
-            width={375}
-            height={375}
-            className="md:rounded object-cover"
-          />
+          {/* image */}
+          <NextImage image={about.attributes?.avatar} priority />
+
           <div className="w-2/3 mt-10">
-            <BodyText className="mb-2">Hi, my name is <span className="text-red-500 font-bold">Jay!</span></BodyText>
+            <BodyText className="mb-2">
+              Hi, my name is{" "}
+              <span className="text-red-500 font-bold">Jay!</span>
+            </BodyText>
 
             <BodyText>{about.attributes.opening}</BodyText>
 
