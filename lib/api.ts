@@ -2,7 +2,9 @@ import qs from "qs";
 
 export const getURL = (path = "") => {
   return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
+    !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+      ? "http://localhost:1337"
+      : process.env.NEXT_PUBLIC_STRAPI_API_URL
   }${path}`;
 };
 

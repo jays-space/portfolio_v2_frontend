@@ -69,6 +69,8 @@ interface IHome {
 const Home = ({ hero, about, featured, otherWork }: IHome) => {
   const [copied, setCopied] = useState(false);
 
+  console.log(about);
+
   const copyToClipboard = async () => {
     navigator.clipboard.writeText("contact.jays.space@gmail.com");
     let email = await navigator.clipboard.readText();

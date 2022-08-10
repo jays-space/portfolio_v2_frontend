@@ -9,6 +9,7 @@ import { StrapiImageType } from "../../types/types";
 interface INextImage {
   image: StrapiImageType;
   priority?: boolean;
+  cover?: boolean;
   thumbnail?: boolean;
   about?: boolean;
   className?: string | undefined;
@@ -18,6 +19,7 @@ const NextImage = ({
   image,
   priority = false,
   thumbnail = false,
+  cover = false,
   about = false,
   className = undefined,
 }: INextImage) => {
@@ -32,7 +34,7 @@ const NextImage = ({
       src={getMedia(image)}
       loader={() => getLoaderMedia(image)}
       alt={alternativeText || ""}
-      className={`${className} rounded-t-lg ${!thumbnail && "lg:!rounded-lg"}`}
+      className={`${className} rounded-lg ${thumbnail && "rounded-b-none"} ${cover && "rounded-none lg:rounded-lg"}`}
       priority={priority}
     />
   );

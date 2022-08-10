@@ -11,7 +11,7 @@ const ProjectDescriptionSection = ({
   problemSolved = undefined,
 }: IProjectDescriptionSection) => {
   return (
-    <div className="ml-10">
+    <div className="md:ml-10">
       <Heading variant="h3" title={description} capitalize={false} />
 
       {problemSolved && (

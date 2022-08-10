@@ -64,7 +64,7 @@ const FeaturedWorkPage = ({ project }: IFeaturedWorkPage) => {
           <ProjectHeadline headline={project?.attributes?.headline} />
 
           {/* cover image */}
-          <NextImage image={project?.attributes?.coverImage} priority />
+          <NextImage image={project?.attributes?.coverImage} cover priority />
 
           <div className="mx-10 lg:mx-24">
             {/* description + tech stack*/}
