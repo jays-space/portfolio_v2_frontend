@@ -96,7 +96,7 @@ const Home = ({ hero, about, featured, otherWork }: IHome) => {
           title="notable work"
           blurb={hero.attributes.blurb}
         >
-          <ProjectGrid projects={featured} />
+          <ProjectGrid projects={featured} reverse />
         </PageSection>
 
         {/* notable works section */}
