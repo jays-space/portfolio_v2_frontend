@@ -14,7 +14,7 @@ const NotFoundPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen lg:-mt-40 -mb-16 flex flex-col justify-center items-center">
+      <main className="h-screen my-10 lg:-mt-40 md:-mb-16 flex flex-col justify-center items-center">
         <Heading title="This is no ordinary a 404 page" className="text-center !text-red-500" />
         <BodyText className="mb-5 font-bold">
           This is ... a dance off!
